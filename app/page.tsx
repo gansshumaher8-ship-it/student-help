@@ -108,7 +108,7 @@ export default function Home() {
             Работаем со студентами:
           </p>
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-lg font-bold text-slate-500 opacity-70">
-            <span>МГУ</span> <span>РУДН</span> <span>РАНХиГС</span> <span>ПМГМУ</span> <span>МГИМО</span> <span>МГТУ</span> <span>РГСУ</span> <span>Синергия</span>
+            <span>МГУ</span> <span>РУДН</span> <span>РАНХиГС</span> <span>ПМГМУ</span> <span>МГИМО</span> <span>МГТУ</span> <span>РГСУ</span> <span>Синергия</span> <span>И другие ВУЗы</span>
           </div>
         </div>
       </section>
