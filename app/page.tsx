@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { GraduationCap, BookOpen, Send, CheckCircle2, ShieldCheck, Wallet, Clock, FileCheck } from 'lucide-react';
+import { ArrowRight, GraduationCap, BookOpen, Send, CheckCircle2, ShieldCheck, Wallet, Clock, FileCheck } from 'lucide-react';
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
