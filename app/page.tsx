@@ -1,21 +1,21 @@
 'use client';
 import React, { useState } from 'react';
-import { BookOpen, Send, CheckCircle2, ShieldCheck, FileText, UserCheck, Library, GraduationCap, ArrowRight } from 'lucide-react';
+import { GraduationCap, BookOpen, Send, CheckCircle2, ShieldCheck, Wallet, Clock, FileCheck, ArrowRight } from 'lucide-react';
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
 
-  // АБСОЛЮТНО БЕЛЫЕ УСЛУГИ (Юридически это репетиторство и клининг текста)
+  // Конверсионный список услуг
   const services = [
-    { title: "Репетиторство", desc: "Разбор сложных тем с преподавателем", icon: <UserCheck /> },
-    { title: "Подбор литературы", desc: "Сбор источников для исследований", icon: <Library /> },
-    { title: "Оформление по ГОСТ", desc: "Нормоконтроль и корректура текста", icon: <FileText /> },
-    { title: "Перевод текстов", desc: "Профессиональный академический перевод", icon: <BookOpen /> },
-    { title: "Повышение оригинальности", desc: "Рерайт и стилистическая правка", icon: <CheckCircle2 /> },
-    { title: "Консультации", desc: "Помощь в выборе темы исследования", icon: <Send /> },
-    { title: "Документооборот", desc: "Помощь в заполнении заявлений", icon: <ShieldCheck /> },
-    { title: "Мастер-классы", desc: "Обучение академическому письму", icon: <GraduationCap /> }
+    { title: "Сопровождение сессии", desc: "Помощь по всем предметам", icon: <Clock /> },
+    { title: "Выпускные работы", desc: "Оформление, план, источники", icon: <FileCheck /> },
+    { title: "Переводы в ВУЗы", desc: "Консультация по зачислению", icon: <GraduationCap /> },
+    { title: "Закрытие долгов", desc: "Помощь с «хвостами»", icon: <CheckCircle2 /> },
+    { title: "Курсовые проекты", desc: "Подбор материала + ГОСТ", icon: <BookOpen /> },
+    { title: "Онлайн-помощь", desc: "Срочная поддержка", icon: <Send /> },
+    { title: "Восстановление", desc: "Решение сложных ситуаций", icon: <ShieldCheck /> },
+    { title: "Индивидуальный план", desc: "Работа с деканатом", icon: <FileCheck /> }
   ];
 
   async function handleSubmit(e: any) {
@@ -40,98 +40,138 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-sans">
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-blue-100">
       
-      {/* Навигация */}
-      <nav className="sticky top-0 z-50 bg-white/95 border-b border-slate-100">
+      {/* Навигация с акцентом на "Без предоплаты" */}
+      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2 font-bold text-xl text-blue-800">
-            <Library size={28} />
-            <span>AcademicCenter</span>
+          <div className="flex items-center gap-2 font-bold text-xl text-blue-700">
+            <GraduationCap size={28} />
+            <span>StudentHelp</span>
           </div>
-          <div className="hidden md:flex text-xs text-slate-500 gap-4">
-            <span>Официальный договор</span>
-            <span>Консультационные услуги</span>
+          <div className="flex items-center gap-2 text-green-600 font-bold text-sm bg-green-50 px-3 py-1 rounded-full border border-green-200">
+            <Wallet size={16} />
+            <span className="hidden sm:inline">Работаем без предоплаты</span>
           </div>
         </div>
       </nav>
 
-      {/* Hero Section - СТРОГО ИНФОРМАЦИОННЫЙ СТИЛЬ */}
+      {/* Hero Section */}
       <header className="py-20 px-6 text-center max-w-4xl mx-auto">
-        <div className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold text-blue-800 bg-blue-50 rounded-full">
-          ИНФОРМАЦИОННО-КОНСУЛЬТАЦИОННЫЙ ЦЕНТР
+        <div className="inline-block px-4 py-1.5 mb-6 text-sm font-bold text-blue-800 bg-blue-100 rounded-full">
+          🚀 СРОЧНАЯ ПОМОЩЬ СТУДЕНТАМ
         </div>
-        <h1 className="text-3xl md:text-5xl font-extrabold mb-6 text-slate-900 leading-tight">
-          Профессиональная помощь <br /> 
-          <span className="text-blue-700">в учебном процессе</span>
+        <h1 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight text-slate-900 leading-tight">
+          Решим проблемы с учебой <br /> 
+          <span className="text-blue-600">с оплатой по факту</span>
         </h1>
-        <p className="text-lg text-slate-600 mb-10 max-w-2xl mx-auto">
-          Оказываем услуги репетиторства, подбора учебных материалов и технического оформления текстов. 
-          Помогаем разобраться в сложных дисциплинах.
+        <p className="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto">
+          Берем на себя всю рутину: от подбора материалов до оформления документов. 
+          Вы платите только тогда, когда видите результат.
         </p>
         
-        <a href="#form" className="inline-flex items-center gap-2 bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-bold hover:bg-blue-800 transition">
-          Получить консультацию <ArrowRight size={20} />
+        {/* Триггеры доверия */}
+        <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10">
+           <div className="flex items-center justify-center gap-2 bg-white px-6 py-3 rounded-xl shadow-sm border border-slate-200">
+             <Wallet className="text-green-500" /> 
+             <span className="font-bold text-slate-700">0₽ Аванс</span>
+           </div>
+           <div className="flex items-center justify-center gap-2 bg-white px-6 py-3 rounded-xl shadow-sm border border-slate-200">
+             <ShieldCheck className="text-blue-500" /> 
+             <span className="font-bold text-slate-700">Гарантия результата</span>
+           </div>
+        </div>
+
+        <a href="#form" className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-2xl text-lg font-bold hover:scale-105 transition-transform shadow-xl shadow-blue-200">
+          Оставить заявку <Send size={20} />
         </a>
       </header>
 
       {/* Список услуг */}
-      <section className="py-16 px-6 bg-slate-50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold mb-10 text-center text-slate-800">Наши направления</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((s) => (
-              <div key={s.title} className="p-6 bg-white border border-slate-200 rounded-xl hover:shadow-md transition">
-                <div className="text-blue-700 mb-4">{s.icon}</div>
-                <h3 className="font-bold text-lg mb-2">{s.title}</h3>
-                <p className="text-slate-500 text-sm">{s.desc}</p>
-              </div>
-            ))}
+      <section className="py-16 px-6 max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold mb-12 text-center text-slate-800">Чем мы можем помочь?</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {services.map((s) => (
+            <div key={s.title} className="p-6 bg-white border border-slate-200 rounded-2xl hover:border-blue-400 hover:shadow-lg transition group">
+              <div className="text-blue-600 mb-4 group-hover:scale-110 transition-transform">{s.icon}</div>
+              <h3 className="font-bold text-lg mb-1">{s.title}</h3>
+              <p className="text-slate-500 text-sm">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Логотипы ВУЗов */}
+      <section className="py-12 bg-slate-100 border-y border-slate-200">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">
+            Работаем со студентами:
+          </p>
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-lg font-bold text-slate-500 opacity-70">
+            <span>МГУ</span> <span>РУДН</span> <span>РАНХиГС</span> <span>ПМГМУ</span> <span>МГИМО</span> <span>МГТУ</span> <span>РГСУ</span> <span>Синергия</span>
           </div>
         </div>
       </section>
 
-      {/* Форма */}
-      <section id="form" className="py-20 px-6">
-        <div className="max-w-3xl mx-auto bg-white border border-slate-200 p-8 rounded-2xl shadow-xl">
-          <h2 className="text-2xl font-bold mb-2 text-center">Заявка на консультацию</h2>
-          <p className="text-center text-slate-500 mb-8 text-sm">Менеджер свяжется с вами для уточнения деталей</p>
-          
-          {!sent ? (
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <input name="name" required placeholder="Ваше имя" className="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 outline-none" />
-              <input name="contact" required placeholder="Телефон или Telegram" className="w-full p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 outline-none" />
-              <select name="service" className="w-full p-3 rounded-lg border border-slate-300 bg-white">
-                <option>Нужен репетитор</option>
-                <option>Подбор литературы</option>
-                <option>Оформление по ГОСТ</option>
-                <option>Другое</option>
-              </select>
-              <button disabled={loading} className="w-full bg-blue-700 text-white p-4 rounded-lg font-bold hover:bg-blue-800 transition flex justify-center items-center gap-2">
-                {loading ? "..." : "Отправить"} <Send size={18} />
-              </button>
-              <p className="text-xs text-center text-slate-400">Согласен на обработку персональных данных</p>
-            </form>
-          ) : (
-            <div className="text-center py-8">
-              <CheckCircle2 size={48} className="mx-auto text-green-600 mb-4" />
-              <h3 className="text-xl font-bold">Спасибо!</h3>
-              <p>Мы скоро с вами свяжемся.</p>
+      {/* Форма захвата */}
+      <section id="form" className="py-20 px-6 bg-white">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center border border-slate-100 p-8 rounded-[40px] bg-gradient-to-br from-white to-blue-50 shadow-2xl shadow-slate-200/50">
+          <div>
+            <h2 className="text-3xl font-bold mb-6 text-slate-800">Узнайте стоимость решения</h2>
+            <p className="text-slate-600 mb-8 text-lg">
+              Опишите ситуацию. Мы проанализируем её и скажем, как можем помочь. Это бесплатно и ни к чему вас не обязывает.
+            </p>
+            <div className="space-y-4 font-medium text-slate-700">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">1</div>
+                Вы оставляете заявку
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">2</div>
+                Мы предлагаем варианты
+              </div>
+              <div className="flex items-center gap-3 text-blue-700">
+                <div className="w-8 h-8 rounded-full bg-green-500 text-white flex items-center justify-center font-bold"><CheckCircle2 size={18} /></div>
+                Вы платите только за результат
+              </div>
             </div>
-          )}
+          </div>
+
+          <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-lg">
+            {!sent ? (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <input name="name" required placeholder="Ваше имя" className="w-full p-4 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none" />
+                <input name="contact" required placeholder="Telegram или телефон" className="w-full p-4 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none" />
+                <select name="service" className="w-full p-4 rounded-xl border border-slate-200 bg-white">
+                  <option>Нужна помощь с сессией</option>
+                  <option>Вопрос по диплому/курсовой</option>
+                  <option>Зачисление / Перевод</option>
+                  <option>Другое</option>
+                </select>
+                <button disabled={loading} className="w-full bg-blue-600 text-white p-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition flex justify-center items-center gap-2 shadow-lg shadow-blue-200/50">
+                  {loading ? "..." : "Рассчитать стоимость"} <ArrowRight size={20} />
+                </button>
+                <p className="text-xs text-center text-slate-400 mt-2">Конфиденциальность гарантирована.</p>
+              </form>
+            ) : (
+              <div className="text-center py-12">
+                <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4"><CheckCircle2 size={40} /></div>
+                <h3 className="text-xl font-bold">Заявка принята!</h3>
+                <p className="text-slate-500">Пишем вам в Telegram...</p>
+              </div>
+            )}
+          </div>
         </div>
       </section>
 
-      {/* DISCLAIMER - САМОЕ ВАЖНОЕ ДЛЯ ЯНДЕКСА */}
-      <footer className="py-8 px-6 bg-slate-100 border-t border-slate-200">
-        <div className="max-w-4xl mx-auto text-[11px] text-slate-500 text-justify leading-relaxed">
-           <p className="font-bold mb-2">Отказ от ответственности (Disclaimer):</p>
-           <p>
-             Данный сайт предлагает исключительно информационно-консультационные услуги, услуги по подбору, обработке и структурированию информации, а также услуги репетиторства. 
-             <strong>Мы не оказываем услуги по написанию научных работ, дипломов, курсовых, диссертаций и иных работ, предусмотренных государственной системой научной аттестации или необходимых для прохождения промежуточной или итоговой аттестации обучающихся.</strong> 
-             Все материалы, подготовленные в рамках оказания услуг, могут использоваться заказчиком только в качестве образцов, справочных материалов или источников информации для самостоятельной подготовки работы.
+      {/* Footer */}
+      <footer className="py-8 px-6 bg-slate-50 border-t border-slate-200">
+        <div className="max-w-4xl mx-auto text-[10px] text-slate-400 text-center leading-relaxed">
+           <p>© 2026 StudentHelp. Информационно-консультационные услуги.</p>
+           <p className="mt-2 opacity-70">
+             Отказ от ответственности: Компания оказывает услуги по подбору материалов, репетиторству и консультированию. 
+             Мы не выполняем научные работы, которые сдаются в качестве итоговой аттестации.
            </p>
-           <p className="mt-2">© 2026 AcademicCenter. Все права защищены.</p>
         </div>
       </footer>
     </div>
